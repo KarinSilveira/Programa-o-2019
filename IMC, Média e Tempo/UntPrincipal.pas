@@ -1,0 +1,90 @@
+unit UntPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Bevel1: TBevel;
+    Bevel2: TBevel;
+    Bevel3: TBevel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    LabeledEdit1: TLabeledEdit;
+    LabeledEdit2: TLabeledEdit;
+    Button1: TButton;
+    Label4: TLabel;
+    LabeledEdit3: TLabeledEdit;
+    LabeledEdit4: TLabeledEdit;
+    LabeledEdit5: TLabeledEdit;
+    Button2: TButton;
+    Label5: TLabel;
+    LabeledEdit6: TLabeledEdit;
+    LabeledEdit7: TLabeledEdit;
+    Button3: TButton;
+    LabeledEdit8: TLabeledEdit;
+    LabeledEdit9: TLabeledEdit;
+    Label6: TLabel;
+    procedure FormMouseEnter(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var altura, peso, imc : real;
+begin
+ altura := StrToFloat (LabeledEdit1.Text);
+ peso := StrToFloat (LabeledEdit2.Text);
+ imc := peso/ (altura * altura);
+ Label4.Caption := FloatToStr (Imc);
+
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var n1,n2,n3,md : real;
+
+begin
+
+  n1 := StrToFloat (LabeledEdit3.Text);
+  n2 := StrToFloat (LabeledEdit4.Text);
+  n3 := StrToFloat (LabeledEdit5.Text);
+  md := (Trunc(n1+n2+n3)/3*100/100);
+  Label5.Caption := FloatToStr (md);
+
+
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+var seg : integer;
+
+begin
+  seg := StrToInt (LabeledEdit6.Text);
+  LabeledEdit7.Text := IntToStr( seg DIV 3600);
+  LabeledEdit8.Text := IntToStr(seg MOD 3600 DIV 60);
+  LabeledEdit9.Text := IntToStr(seg MOD 3600 MOD 60);
+
+
+end;
+
+procedure TForm1.FormMouseEnter(Sender: TObject);
+begin
+  Form1.Color := clSkyBlue;
+end;
+
+end.
